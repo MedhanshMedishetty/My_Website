@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Medhansh Medishetty — Portfolio</title>
+  <meta name="description" content="Medhansh — software, data & creative. Portfolio site." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* --------------------
+       THEME: Minimal Modern
+       Updated with full project & experience information
+       Replace /assets/* files with your real images and PDFs
+       -------------------- */
+
+    :root{
+      --bg: #ffffff;
+      --card: #fbfdff;
+      --text: #0b1220;
+      --muted: #6b7280;
+      --accent: #0f766e; /* teal accent - minimal but fresh */
+      --glass: rgba(255,255,255,0.6);
+      --radius: 14px;
+      --maxWidth: 1100px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,#ffffff 0%,#f7fafc 100%);color:var(--text);-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none}
+
+    .container{max-width:var(--maxWidth);margin:0 auto;padding:28px}
+
+    /* NAV */
+    html {
+        scroll-behavior: smooth;
+        }
+
+        /* NAV */
+        header {
+        position: sticky;
+        top: 0;
+        z-index: 80;
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+        font-size: larger;
+        }
+
+        header.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        backdrop-filter: blur(6px);
+        }
+
+    header{position:sticky;top:12px;z-index:80}
+    .nav-wrap{background:transparent;padding:10px 6px;border-radius:12px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:700;display:flex;gap:8px;align-items:center}
+    .nav-links{display:flex;gap:14px;align-items:center}
+    .nav-links a{font-weight:600;color:var(--muted);padding:8px 10px;border-radius:10px}
+    .nav-links a.cta{background:transparent;border:1px solid rgba(15,23,42,0.06);color:var(--text)}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:40px 0}
+    .hero h1{font-size:36px;margin:0;line-height:1.02}
+    .type{color:var(--accent);font-weight:700}
+    .hero p{color:var(--muted);margin:14px 0 18px;font-size:18px}
+
+    .cta{display:flex;gap:12px}
+    .btn{padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer;border:0}
+    .btn.primary{background:var(--accent);color:white}
+    .btn.ghost{background:transparent;border:1px solid rgba(11,17,32,0.06);color:var(--text)}
+
+    /* preview card */
+    .card{background:var(--card);padding:18px;border-radius:16px;box-shadow:0 8px 30px rgba(2,6,23,0.04)}
+    .profile {
+      display: flex;
+      flex-direction: column;  /* stack vertically */
+      align-items: center;     /* center horizontally */
+      text-align: center;      /* center text */
+    }
+
+    .avatar {
+      width: 380px;
+      height: 300px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin: 0 auto ;          /* center inside parent */
+    }
+    .meta h3{margin:0;font-size:22px}
+    .meta p{margin:6px 0 0;color:var(--muted);font-size:18px}
+    
+    /* Sections */
+    section{padding:36px 0}
+    .section-title{font-size:25px;margin:0 0 14px}
+
+    /* Grid */
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card-sm{background:linear-gradient(180deg,#fff,#fbfdff);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,0.03)}
+    .muted{color:var(--muted);font-size:16px}
+
+    /* Skills */
+    .about-wrap {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 280px;
+      max-width: 600px;   /* 🔥 restrict text width */
+    }
+
+    .skills-card {
+      width: 400px;       /* fixed size for balance */
+      flex-shrink: 0;     /* prevent shrinking */
+    }
+
+    .skill-row{display:flex;gap:12px;flex-wrap:wrap}
+    .skill{padding:8px 10px;border-radius:10px;background:rgba(15,119,110,0.06);font-weight:600;color:var(--accent)}
+
+    /* Projects */
+    .projects-filter {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .filter-btn {
+      padding: 10px 14px;              /* slightly smaller than before */
+      font-size: 0.95rem;              /* reduced text size a bit */
+      font-weight: 600;
+      border-radius: 10px;
+      border: 1px solid rgba(2,6,23,0.08);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .filter-btn:hover {
+      background: rgba(2,6,23,0.05);
+    }
+
+
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .project-card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 12px 30px rgba(2,6,23,0.04);display:flex;flex-direction:column;gap:8px;transition:transform .25s,box-shadow .25s}
+    .project-card:hover{transform:translateY(-8px);box-shadow:0 22px 38px rgba(2,6,23,0.08)}
+    .project-thumb{width:100%;height:160px;border-radius:10px;object-fit:cover}
+    .project-meta small{color:var(--muted)}
+    .badge-live{display:inline-block;background:rgba(15,119,110,0.12);color:var(--accent);padding:6px 8px;border-radius:8px;font-weight:700}
+
+    /* Modal for case studies */
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(6,10,16,0.6);padding:24px;z-index:999;visibility:hidden;opacity:0;transition:opacity .2s}
+    .modal.open{visibility:visible;opacity:1}
+    .modal-content{background:#fff;border-radius:12px;max-width:850px;width:100%;padding:20px;max-height:80vh;overflow:auto}
+    .modal-close{float:right;cursor:pointer;padding:6px 8px;border-radius:8px}
+
+    /* Timeline */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .timeline-item{display:flex;gap:12px;align-items:flex-start}
+    .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:6px}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:22px}
+    input,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(2,6,23,0.06);font-size:14px}
+
+    footer{padding:28px 0;border-top:1px solid rgba(2,6,23,0.04);margin-top:30px}
+
+    /* Micro interactions */
+    .fade-up{opacity:0;transform:translateY(12px);transition:all .6s cubic-bezier(.2,.9,.3,1)}
+    .fade-up.visible{opacity:1;transform:none}
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:repeat(2,1fr)}
+      .projects-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      .grid-3{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .container{padding:18px}
+    }
+
+    /* Smooth hover effects */
+    a, button {
+      transition: all 0.3s ease;
+    }
+
+    a:hover, button:hover {
+      transform: scale(1.05);
+      opacity: 0.85;
+    }
+
+    nav {
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.7); /* Light glass effect */
+      transition: background 0.3s ease;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-wrap">
+      <div class="logo">
+        <div style="font-weight:800">Medhansh</div>
+        <div style="width:8px;height:8px;background:var(--accent);border-radius:50%"></div>
+      </div>
+      <nav class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#experiments">Build Logs</a>
+        <a href="#about">About</a>
+        <a class="cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1 class="fade-up" style="transition-delay:.05s">I Turn Ideas Into Live Projects — <span class="type">Code · Data · Product</span></h1>
+        <p class="fade-up" style="transition-delay:.12s">I’m <strong>Medhansh</strong>, a 20-year-old BTech student who builds real products — from research-grade EV simulations to live client websites and growth-focused media. I ship fast, measure outcomes, and iterate.</p>
+
+        <div class="cta fade-up" style="transition-delay:.18s">
+          <a class="btn primary" href="#work">View Work</a>
+          <a class="btn ghost" href="#contact">Hire / Collaborate</a>
+          <a class="btn ghost" href="assets/Medhansh_Resume.pdf" download>Download CV</a>
+        </div>
+
+        <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+          <div style="padding:8px 12px;background:rgba(15,119,110,0.06);border-radius:12px;font-weight:700;color:var(--accent)">Deployed 1 live site</div>
+          <div style="padding:8px 12px;background:rgba(2,6,23,0.04);border-radius:12px;color:var(--muted)">7-week EV research</div>
+          <div style="padding:8px 12px;background:rgba(2,6,23,0.04);border-radius:12px;color:var(--muted)">AIML projects & internships</div>
+        </div>
+      </div>
+
+      <aside class="card fade-up" style="transition-delay:.22s">
+        <img class="avatar" src="assets/avatar.jpg" alt="Avatar">
+        <div class="meta">
+          <br>
+          <h3>Medhansh Medishetty</h3>
+          <p>Software · Data · Product · Marketing</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="fade-up" style="transition-delay:.26s">
+      <h3 class="section-title">About</h3>
+      <div class="about-wrap">
+        <div class="about-text">
+          <p class="muted">
+            I don’t just study engineering — I build things that matter. From <strong>defense-grade grounding systems at DRDL</strong> to <strong>simulating next-gen EV battery architectures</strong>, I’ve worked on projects that demand precision, speed, and measurable outcomes. Outside labs, I’ve <strong>deployed live websites</strong> for real businesses and produced <strong>marketing media that drives growth</strong>. My approach is simple: build fast, measure real impact, and refine until it works.
+          </p>
+
+          <p class="muted">
+            <strong>Career focus:</strong> I’m carving my path at the intersection of <strong>software engineering, data science, and product growth</strong>. I enjoy roles where I can code features, analyze results, and bring a product from concept to launch — whether in a startup sprint or within large-scale systems.
+          </p>
+
+          <p class="muted">
+            <strong>Quick facts:</strong> Based in Hyderabad • Experienced with <strong>Python, SQL, Power BI, MATLAB, PSpice</strong> and more • Comfortable leading teams in the field or shipping solo • Known for <strong>taking ideas from zero to execution</strong>. 
+          </p>
+
+          <p class="muted">
+            My goal? To merge <strong>engineering rigor</strong> with <strong>entrepreneurial energy</strong> and build products that stand out — whether that’s an algorithm, a dashboard, or a brand new business line.
+          </p>
+        </div>
+
+
+        <div class="skills-card">
+          <div class="card-sm">
+            <div style="font-weight:700; font-size:20px">Skills</div>
+            <div style="margin-top:8px" class="skill-row">
+              <div class="skill">Python</div>
+              <div class="skill">C/C++</div>
+              <div class="skill">SQL/MySQL</div>
+              <div class="skill">Power BI</div>
+              <div class="skill">HTML/CSS/JS</div>
+              <div class="skill">TensorFlow/ML</div>
+              <div class="skill">Git & Github</div>
+              <div class="skill">MS Office</div>
+              <div class="skill">Data Visualization</div>
+              <div class="skill">Project Management</div>
+              <div class="skill">Basic CAD / Mechanical</div>
+              <div class="skill">MATLAB</div>
+              <div class="skill">PSpice</div>
+              <div class="skill">Reels / Video Editing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="work" class="fade-up" style="transition-delay:.30s">
+      <h3 class="section-title">Projects</h3>
+
+      <div>
+        <div class="projects-filter">
+          <button class="filter-btn" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="data">Data Analysis</button>
+          <button class="filter-btn" data-filter="aiml">AI / ML</button>
+          <button class="filter-btn" data-filter="eng">Engineering</button>
+          <button class="filter-btn" data-filter="web">Web / Media</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+
+          <!-- SweetHeart - live -->
+          <div class="project-card" data-category="web" data-id="sweetheart">
+            <img class="project-thumb" src="assets/sweetheart.png" alt="SweetHeart">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="font-weight:700">SweetHeart — Live Menu Website</div>
+                <span class="badge-live">Live</span>
+              </div>
+              <small class="muted">Responsive menu site for a local restaurant. Deployed on Vercel — owner-friendly and fast to update.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <a class="btn ghost" href="https://sweetheart2.vercel.app/" target="_blank">Open</a>
+              <button class="btn case-btn" data-id="sweetheart">Case Study</button>
+            </div>
+          </div>
+
+          <!-- MR Group - upcoming -->
+          <div class="project-card" data-category="web" data-id="mrgroup">
+            <img class="project-thumb" src="assets/mrgroup.png" alt="MR Group">
+            <div>
+              <div style="font-weight:700">MR Group — Company Website (upcoming)</div>
+              <small class="muted">Website in progress for MR INFRA & MR TORQUES to showcase manufacturing, construction, and product lines.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn" onclick="openProject('mrgroup')">Preview</button>
+              <button class="btn case-btn" data-id="mrgroup">Case Study</button>
+            </div>
+          </div>
+
+          <!-- Amazon Sales Optimization - Data -->
+          <div class="project-card" data-category="data" data-id="amazon">
+            <img class="project-thumb" src="assets/amazon.png" alt="Amazon">
+            <div>
+              <div style="font-weight:700">Sales Performance Optimization — Amazon India</div>
+              <small class="muted">Analyzed a cleaned dataset (~128,976 records) to identify top categories, seasonal patterns, and pricing strategies. Power BI dashboards + SQL queries.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn ghost" onclick="openProject('amazon')">View Report</button>
+              <button class="btn case-btn" data-id="amazon">Case Study</button>
+            </div>
+          </div>
+
+          <!-- Super Store - Power BI -->
+          <div class="project-card" data-category="data" data-id="superstore">
+            <img class="project-thumb" src="assets/superstore.png" alt="SuperStore">
+            <div>
+              <div style="font-weight:700">Super Store Sales Dashboard — Power BI</div>
+              <small class="muted">Interactive dashboard built in Power BI highlighting KPIs, regional trends and product-level insights.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn" onclick="openProject('superstore')">Open</button>
+              <button class="btn case-btn" data-id="superstore">Case Study</button>
+            </div>
+          </div>
+
+          <!-- Zomato Dashboard - Power BI -->
+          <div class="project-card" data-category="data" data-id="zomato">
+            <img class="project-thumb" src="assets/zomato.png" alt="Zomato">
+            <div>
+              <div style="font-weight:700">Zomato Sales Dashboard</div>
+              <small class="muted">Restaurant-level sales analytics and menu performance visualization using Power BI.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn" onclick="openProject('zomato')">Open</button>
+              <button class="btn case-btn" data-id="zomato">Case Study</button>
+            </div>
+          </div>
+
+          <!-- EV Simulation - Engineering -->
+          <div class="project-card" data-category="eng" data-id="ev">
+            <img class="project-thumb" src="assets/ev_sim.png" alt="EV Simulation">
+            <div>
+              <div style="font-weight:700">EV Battery Simulation — 800V vs 400V</div>
+              <small class="muted">7-week MATLAB research comparing power delivery, thermal behavior and performance tradeoffs for 800V and 400V systems.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn ghost" onclick="openProject('ev')">Summary</button>
+              <button class="btn case-btn" data-id="ev">Case Study</button>
+            </div>
+          </div>
+
+          <!-- DRDL Grounding - Engineering -->
+          <div class="project-card" data-category="eng" data-id="drdl">
+            <img class="project-thumb" src="assets/drdl.png" alt="DRDL">
+            <div>
+              <div style="font-weight:700">DRDL — Grounding & Earth Pits</div>
+              <small class="muted">PSpice simulations, earth-pit calculations and led a small installation team during the internship at DRDL Hyderabad.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn" onclick="openProject('drdl')">Details</button>
+              <button class="btn case-btn" data-id="drdl">Case Study</button>
+            </div>
+          </div>
+
+          <!-- AIML Projects (TensorFlow etc) -->
+          <div class="project-card" data-category="aiml" data-id="textcls">
+            <img class="project-thumb" src="assets/text_cls.png" alt="Text Classification">
+            <div>
+              <div style="font-weight:700">Text Classification — TensorFlow</div>
+              <small class="muted">Part of a guided AIML internship: preprocessing, model training (TensorFlow), and evaluation. (Project listed in certification).</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn ghost" onclick="openProject('textcls')">Notebook</button>
+              <button class="btn case-btn" data-id="textcls">Case Study</button>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="aiml" data-id="landmark">
+            <img class="project-thumb" src="assets/landmark.png" alt="Landmark Detection">
+            <div>
+              <div style="font-weight:700">Landmark Detection</div>
+              <small class="muted">An image-based model to detect and label landmarks using transfer learning and object detection approaches.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn" onclick="openProject('landmark')">Preview</button>
+              <button class="btn case-btn" data-id="landmark">Case Study</button>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="aiml" data-id="petface">
+            <img class="project-thumb" src="assets/petface.png" alt="Pet Face Classification">
+            <div>
+              <div style="font-weight:700">Pet Face Classification</div>
+              <small class="muted">CNN model trained to classify pet species/breeds using data augmentation and transfer learning techniques.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn" onclick="openProject('petface')">Preview</button>
+              <button class="btn case-btn" data-id="petface">Case Study</button>
+            </div>
+          </div>
+
+          <!-- Python project: Website Navigation System -->
+          <div class="project-card" data-category="eng" data-id="navsys">
+            <img class="project-thumb" src="assets/navsys.png" alt="Navigation System">
+            <div>
+              <div style="font-weight:700">Website Navigation System (Python)</div>
+              <small class="muted">An intelligent navigation prototype for websites — designed and prototyped in Python. Useful for accessibility and voice-driven navigation use-cases.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn" onclick="openProject('navsys')">Demo</button>
+              <button class="btn case-btn" data-id="navsys">Case Study</button>
+            </div>
+          </div>
+
+          <!-- Urban Nook reel -->
+          <div class="project-card" data-category="web" data-id="urbannook">
+            <img class="project-thumb" src="assets/urbannook.png" alt="Urban Nook Reel">
+            <div>
+              <div style="font-weight:700">Urban Nook — Brand Reel</div>
+              <small class="muted">Produced and edited a promotional reel for a cousin's clothing brand to increase engagement and reach.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn" onclick="openProject('urbannook')">Watch</button>
+              <button class="btn case-btn" data-id="urbannook">Case Study</button>
+            </div>
+          </div>
+
+          <!-- SHADEN - Clothing brand concept -->
+          <div class="project-card" data-category="web" data-id="shaden">
+            <img class="project-thumb" src="assets/shaden.png" alt="Shaden">
+            <div>
+              <div style="font-weight:700">SHADEN — Clothing Brand (Coming soon)</div>
+              <small class="muted">Brand concept, moodboards, and pre-launch strategy for a premium streetwear label.</small>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:8px">
+              <button class="btn" onclick="openProject('shaden')">Moodboard</button>
+              <button class="btn case-btn" data-id="shaden">Case Study</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:18px">
+          <a href="https://github.com/MedhanshMedishetty" class="btn" target="_blank">More projects on GitHub</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- EXPERIMENTS / BUILD LOGS -->
+    <section id="experiments" class="fade-up" style="transition-delay:.36s">
+      <h3 class="section-title">Build Logs</h3>
+      <div class="grid-3">
+
+        <!-- Restaurant Menu -->
+        <div class="card-sm">
+          <h4 style="margin:0 0 6px">🚀 How I Launched a Restaurant Menu in 48 Hours</h4>
+          <p class="muted">From WhatsApp PDFs to a live, mobile-friendly menu. Built, tested, and deployed on Vercel with a repeatable GitHub workflow.</p>
+          <small class="muted">Tech: HTML, CSS, Vercel</small>
+        </div>
+
+        <!-- EV Simulation -->
+        <div class="card-sm">
+          <h4 style="margin:0 0 6px">⚡ EV Simulation — Key Insights</h4>
+          <p class="muted">Compared 800V vs 400V systems in MATLAB. Findings: higher efficiency at scale, but bigger thermal trade-offs. Documented frameworks for future EV projects.</p>
+          <small class="muted">Tools: MATLAB, Simulink</small>
+        </div>
+
+        <!-- Growth Reels -->
+        <div class="card-sm">
+          <h4 style="margin:0 0 6px">🎥 Small Biz Growth with Reels</h4>
+          <p class="muted">Low-budget video production experiment for a clothing brand. Increased reach + conversions by leveraging storytelling and algorithm-friendly edits.</p>
+          <small class="muted">Tools: Premiere Pro, Instagram Insights</small>
+        </div>
+
+        <!-- Optional Extra Logs -->
+        <div class="card-sm">
+          <h4 style="margin:0 0 6px">🛠️ Debugging Nightmare → Lesson Learned</h4>
+          <p class="muted">Spent hours chasing a SQL join bug. Wrote a checklist of queries and debugging patterns — now my go-to for complex datasets.</p>
+          <small class="muted">Tech: MySQL</small>
+        </div>
+
+        <div class="card-sm">
+          <h4 style="margin:0 0 6px">📊 First Power BI Dashboard Build</h4>
+          <p class="muted">Learned the difference between “making graphs” and “telling a story.” Shifted focus to KPIs, slicers, and narrative dashboards.</p>
+          <small class="muted">Tech: Power BI</small>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- EXPERIENCE -->
+    <section class="fade-up" style="transition-delay:.4s">
+      <h3 class="section-title">Experience</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div>
+            <div style="font-weight:700">DRDL — Internship (6 weeks)</div>
+            <div class="muted">Grounding systems, PSpice simulation, earth pit calculations, and on-site installations — Hyderabad, 2024.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div>
+            <div style="font-weight:700">NITW — Research Internship (6 weeks)</div>
+            <div class="muted">EV battery research and power electronics simulation (PWM & Boost rectifier) — 2024.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div>
+            <div style="font-weight:700">BHEL — Short Internship (2 weeks)</div>
+            <div class="muted">Industrial exposure to electrical machinery and manufacturing processes — Hyderabad.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div>
+            <div style="font-weight:700">AIML Training — Personify (IIT Bhubaneswar) — 2 months</div>
+            <div class="muted">Completed guided projects including Text Classification using TensorFlow and other models.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div>
+            <div style="font-weight:700">AIML Workshop — IIT Hyderabad (2 days)</div>
+            <div class="muted">Hands-on AIML workshop organized by Edu Fabrica — Oct 2023.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="dot"></div>
+          <div>
+            <div style="font-weight:700">Freelance — Web & Media</div>
+            <div class="muted">Reels, website builds (SweetHeart), and marketing assets for local businesses — ongoing.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTS & WORKSHOPS -->
+    <section class="fade-up" style="transition-delay:.44s">
+      <h3 class="section-title">Workshops & Certifications</h3>
+      <div class="grid-3">
+        <div class="card-sm">
+          <div style="font-weight:700">AIML — IIT Hyderabad (Edu Fabrica)</div>
+          <div class="muted">Oct 7–8, 2023</div>
+          <div style="margin-top:8px"><a href="assets/certs/EDU_FABRICA_AIML_2days_offline_workshop.jpg" target="_blank">View Certificate</a></div>
+        </div>
+        <div class="card-sm">
+          <div style="font-weight:700">Power BI & Big Data — Techtip24</div>
+          <div class="muted">Aug 19–20, 2023</div>
+          <div style="margin-top:8px"><a href="assets/certs/Power_BI_Certificate.pdf" target="_blank">View Certificate</a></div>
+        </div>
+        <div class="card-sm">
+          <div style="font-weight:700">AI Tools — Be10X</div>
+          <div class="muted">Jul 30, 2023</div>
+          <div style="margin-top:8px"><a href="assets/certs/AI_TOOLS_certificate.pdf" target="_blank">View Certificate</a></div>
+        </div>
+
+        <div class="card-sm">
+          <div style="font-weight:700">AI in MS Office — Skill Nation</div>
+          <div class="muted">Aug 12, 2023</div>
+          <div style="margin-top:8px"><a href="assets/certs/AI_in_MS_OFFICE_certificate.pdf" target="_blank">View Certificate</a></div>
+        </div>
+
+        <div class="card-sm">
+          <div style="font-weight:700">AIML Internship — Personify (1stop.ai)</div>
+          <div class="muted">Jan–Feb 2024</div>
+          <div style="margin-top:8px"><a href="assets/certs/Internship_Project-1_Completion.pdf" target="_blank">View Certificate</a></div>
+        </div>
+
+        <div class="card-sm">
+          <div style="font-weight:700">AIML — Internship Completion</div>
+          <div class="muted">Mar–Apr 2024</div>
+          <div style="margin-top:8px"><a href="assets/certs/Medishetty_Medhansh_Mar_2024_internship_Completion.pdf" target="_blank">View Certificate</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="fade-up" style="transition-delay:.48s">
+      <h3 class="section-title">Contact</h3>
+      <div class="contact-grid">
+        <div>
+          <p class="muted">Want to collaborate, hire me for product/data work, or give feedback? Reach out — I reply fast.</p>
+          <ul>
+            <li><strong>Email:</strong> <a href="mailto:medishettymedhansh@gmail.com">medishettymedhansh@gmail.com</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/medhansh-medishetty-32328225b/">My-linkedin</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/MedhanshMedishetty">@MedhanshMedishetty</a></li>
+          </ul>
+        </div>
+        <div>
+          <!-- EmailJS form (you'll need to set up an EmailJS account and replace service IDs) -->
+          <form id="contactForm">
+            <input id="name" placeholder="Your name" required />
+            <input id="email" type="email" placeholder="Your email" required />
+            <textarea id="message" rows="6" placeholder="Tell me about the project" required></textarea>
+            <button class="btn primary" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div class="muted">© 2025 Medhansh Medishetty</div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <a href="#about">About</a>
+          <a href="#work">Work</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Case study modal -->
+  <div id="caseModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 id="caseTitle">Case Study</h3>
+        <div class="modal-close" id="modalClose">✕</div>
+      </div>
+      <div id="caseBody" style="margin-top:12px;color:var(--muted)"></div>
+    </div>
+  </div>
+
+  <script>
+    /* --------------------
+       Interactivity: filters, reveal, case study modal, contact mailto fallback
+       -------------------- */
+
+    // Scroll reveal
+    document.querySelectorAll('.fade-up').forEach(el=>{
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('visible'); io.unobserve(entry.target) } })
+      },{threshold:0.12})
+      io.observe(el);
+    })
+
+    // Project filter
+    document.querySelectorAll('.filter-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const f = btn.getAttribute('data-filter');
+        document.querySelectorAll('.project-card').forEach(card=>{
+          if(f==='all') card.style.display='flex';
+          else card.style.display = card.getAttribute('data-category')===f ? 'flex' : 'none';
+        });
+        document.querySelectorAll('.filter-btn').forEach(b=>b.style.borderColor='rgba(2,6,23,0.04)');
+        btn.style.borderColor='var(--accent)';
+      })
+    })
+
+    // Case studies content (prewritten from your notes)
+    const caseStudies = {
+      'sweetheart': `<p><strong>Challenge:</strong> Local restaurant needed a clean, fast, and owner-manageable menu online to stop sharing images.</p>
+        <p><strong>Process:</strong> Built a responsive static site, optimized images, and deployed on Vercel. Setup a simple update process using GitHub or file replacements.</p>
+        <p><strong>Result:</strong> Live link for customers and delivery partners, faster menu updates, reduced owner effort.</p>`,
+
+      'mrgroup': `<p><strong>Goal:</strong> Create a professional presence for MR INFRA and MR TORQUES under MR Group of Companies.</p>
+        <p><strong>Approach:</strong> Designing a modern business site with clear services, project gallery, and contact funnels for leads. Focus on lead capture and product showcase.</p>
+        <p><strong>Status:</strong> In development. Upcoming page will include company profiles, product pages, and contact forms.</p>`,
+
+      'amazon': `<p><strong>Challenge:</strong> Understand sales patterns from a large Amazon India dataset (≈128,976 records).</p>
+        <p><strong>Process:</strong> Data cleaning, SQL analysis in MySQL, exploratory analysis, and interactive dashboards in Power BI. Built KPIs for category performance and seasonality.</p>
+        <p><strong>Impact:</strong> Actionable insights on pricing and promotions; dashboards for tracking key metrics.</p>`,
+
+      'superstore': `<p><strong>Project:</strong> Super Store Sales Dashboard</p>
+        <p><strong>Work:</strong> Data modelling and visualisation using Power BI. Implemented filters, measures, and drill-downs for deeper insights.</p>`,
+
+      'zomato': `<p><strong>Project:</strong> Zomato Sales Dashboard</p>
+        <p><strong>Work:</strong> Restaurant analytics to track menu performance and order trends. Recommendations included menu pruning and promotional strategies.</p>`,
+
+      'ev': `<p><strong>Challenge:</strong> Compare 800V vs 400V battery systems for EV applications.</p>
+        <p><strong>Approach:</strong> MATLAB simulations covering power delivery, thermal behaviour and performance tradeoffs; simulated PWM and Boost rectifier components.</p>
+        <p><strong>Outcome:</strong> Technical summary of tradeoffs to inform design decisions for vehicle architecture.</p>`,
+
+      'drdl': `<p><strong>Work:</strong> Earth pit calculations, PSpice validation and on-site installation leadership during DRDL internship.</p>
+        <p><strong>Outcome:</strong> Successfully constructed grounding installations and validated performance with simulation and field tests.</p>`,
+
+      'textcls': `<p><strong>Project:</strong> Text Classification (TensorFlow)</p>
+        <p><strong>Details:</strong> Tokenization, embeddings, model training and evaluation. This project is part of the Personify AIML internship certificates.</p>`,
+
+      'landmark': `<p><strong>Project:</strong> Landmark Detection</p>
+        <p><strong>Details:</strong> Transfer learning and object detection approaches to recognize and label landmarks from images.</p>`,
+
+      'petface': `<p><strong>Project:</strong> Pet Face Classification</p>
+        <p><strong>Details:</strong> CNN-based classifier with augmentation and fine-tuning to distinguish breeds and species.</p>`,
+
+      'navsys': `<p><strong>Project:</strong> Website Navigation System (Python)</p>
+        <p><strong>Details:</strong> Prototype navigation system aimed at improving accessibility and site navigation using python-based parsing and control flows. Demo available on request.</p>`,
+
+      'urbannook': `<p><strong>Project:</strong> Urban Nook — Brand Reel</p>
+        <p><strong>Work:</strong> Concept, shoot-plan, editing and final delivery. Designed for social reach and conversions.</p>`,
+
+      'shaden': `<p><strong>Project:</strong> SHADEN — Clothing Brand</p>
+        <p><strong>Status:</strong> Brand identity, moodboards and pre-launch strategy created. Launch materials ready.</p>`
+    };
+
+    // Open modal
+    const modal = document.getElementById('caseModal');
+    const caseTitle = document.getElementById('caseTitle');
+    const caseBody = document.getElementById('caseBody');
+    document.querySelectorAll('.case-btn').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const id = btn.getAttribute('data-id');
+        const projectEl = document.querySelector(`[data-id="${id}"]`);
+        // Try to fetch a visible project title; fallback to id
+        let titleText = id;
+        try{
+          if(projectEl){
+            const titleNode = projectEl.querySelector('div > div');
+            if(titleNode) titleText = titleNode.innerText || id;
+          }
+        }catch(e){ titleText = id }
+        caseTitle.innerText = titleText || 'Case Study';
+        caseBody.innerHTML = caseStudies[id] || '<p>No case study available yet.</p>';
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      })
+    })
+
+    document.getElementById('modalClose').addEventListener('click',()=>{
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    })
+
+    // Helper openProject (placeholder to show how you might link to long reports)
+    function openProject(id){
+      caseBody.innerHTML = caseStudies[id] || '<p>Details will be published soon.</p>';
+      const projectEl = document.querySelector(`[data-id="${id}"]`);
+      if(projectEl){
+        const titleNode = projectEl.querySelector('div > div');
+        caseTitle.innerText = (titleNode && titleNode.innerText) ? titleNode.innerText : 'Project';
+      } else {
+        caseTitle.innerText = 'Project';
+      }
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    }
+
+    // Contact mailto fallback
+    document.getElementById('contactForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Portfolio enquiry from ' + name);
+      // Use template literal to safely include newlines
+      const body = encodeURIComponent(`Name: ${name}
+Email: ${email}
+
+${message}`);
+      window.location.href = `mailto:your.email@example.com?subject=${subject}&body=${body}`;
+    });
+
+    // image fallbacks
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.querySelectorAll('.project-thumb').forEach(img=>{ if(!img.complete || img.naturalWidth===0) img.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360"><rect width="100%" height="100%" fill="%23eef2f1"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%239ba8a4" font-family="Arial" font-size="20">Project</text></svg>' });
+      const avatar = document.querySelector('.avatar'); if(avatar && ( !avatar.complete || avatar.naturalWidth===0 )) avatar.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="100%" height="100%" fill="%23e6f2ef"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%230f766e" font-family="Arial" font-size="32">Med</text></svg>';
+    })
+
+    // Header background on scroll
+    window.addEventListener("scroll", () => {
+    const header = document.querySelector("header");
+    if (window.scrollY > 10) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+    });
+
+
+  </script>
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 60;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+          link.classList.add("active");
+        }
+      });
+    });
+    </script>
+</body>
+</html>
