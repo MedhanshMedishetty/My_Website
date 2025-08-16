@@ -72,7 +72,30 @@
     .btn.primary{background:var(--accent);color:white}
     .btn.ghost{background:transparent;border:1px solid rgba(11,17,32,0.06);color:var(--text)}
 
-    /* preview card */
+    /* --- Button consistency for project cards --- */
+.project-card .btn,
+.project-card .btn.ghost,
+.project-card .btn.primary {
+  font-size: 15px !important;
+  padding: 10px 16px !important;
+  border-radius: 10px !important;
+  min-width: 90px;
+  height: 38px;
+  line-height: 1.2;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  /* Remove any inherited font-size or padding differences */
+}
+
+/* Make sure all .btn inside .project-card have the same margin/gap */
+.project-card .btn + .btn {
+  margin-left: 0 !important;
+}
+
+/* preview card */
     .card{background:var(--card);padding:18px;border-radius:16px;box-shadow:0 8px 30px rgba(2,6,23,0.04)}
     .profile {
       display: flex;
@@ -121,6 +144,109 @@
 
     .skill-row{display:flex;gap:12px;flex-wrap:wrap}
     .skill{padding:8px 10px;border-radius:10px;background:rgba(15,119,110,0.06);font-weight:600;color:var(--accent)}
+
+    /* Remove all backgrounds and button effects for skills and tech stack badges */
+
+/* Skills section (plain text, no background, no border) */
+.skill-row .skill {
+  background: none !important;
+  color: #000 !important;
+  border: none !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  padding: 0 6px !important;
+  border-radius: 0 !important;
+  margin-bottom: 2px;
+  letter-spacing: 0.01em;
+  box-shadow: none !important;
+  transition: color 0.2s;
+}
+
+body.dark .skill-row .skill {
+  background: none !important;
+  color: #fff !important;
+}
+
+/* Tech stack badges in project cards (plain text, no background, no border) */
+.skill.project-badge {
+  background: none !important;
+  color: #6b7280 !important; /* muted color for subtle look */
+  font-size: 13px !important;
+  padding: 0 6px !important;
+  border-radius: 0 !important;
+  font-weight: 600 !important;
+  margin-bottom: 2px;
+  box-shadow: none !important;
+  letter-spacing: 0.01em;
+}
+
+body.dark .skill.project-badge {
+  background: none !important;
+  color: #b6c2d1 !important;
+}
+
+/* Add or update this in your <style> block */
+
+.skill-row .skill {
+  background: none !important;
+  color: #000 !important;
+  border: none !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  padding: 6px 10px !important;
+  border-radius: 8px !important;
+  margin-bottom: 2px;
+  letter-spacing: 0.01em;
+  box-shadow: none !important;
+  transition: color 0.2s;
+}
+
+body.dark .skill-row .skill {
+  color: #fff !important;
+}
+
+/* Skills bars */
+.skills-bars {
+  margin-top: 18px;
+  width: 100%;
+  max-width: 340px;
+}
+.skill-bar {
+  margin-bottom: 14px;
+}
+.skill-bar-label {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 3px;
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+}
+.skill-bar-track {
+  background: #e5e7eb;
+  border-radius: 8px;
+  height: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #38e8c3 60%, #0f766e 100%);
+  transition: width 0.7s cubic-bezier(.2,.9,.3,1);
+}
+
+/* Dark mode for skills bars */
+body.dark .skill-bar-label {
+  color: #e0e6ef !important;
+}
+body.dark .skill-bar-track {
+  background: #232b39 !important;
+}
+body.dark .skill-bar-fill {
+  background: linear-gradient(90deg, #38e8c3 60%, #38e8c3 100%) !important;
+}
 
     /* Projects */
     .projects-filter {
@@ -203,7 +329,125 @@
       transition: background 0.3s ease;
     }
 
+    /* Dark mode styles */
+body.dark {
+  background: #000 !important;
+  color: #f3f6fa !important;
+}
+body.dark header,
+body.dark nav,
+body.dark .nav-wrap {
+  background: #000 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.32) !important;
+  backdrop-filter: none !important;
+}
+body.dark .nav-links a,
+body.dark .logo > div,
+body.dark .section-title,
+body.dark .meta h3,
+body.dark .meta p,
+body.dark .muted,
+body.dark .timeline-item,
+body.dark .fade-up.visible {
+  color: #e0e6ef !important;
+}
+body.dark .nav-links a.cta {
+  border: 1px solid #38e8c3 !important;
+  color: #38e8c3 !important;
+  background: transparent !important;
+}
+body.dark .btn.primary {
+  background: #38e8c3 !important;
+  color: #000 !important;
+}
+body.dark .btn.ghost {
+  background: transparent !important;
+  color: #38e8c3 !important;
+  border-color: #38e8c3 !important;
+}
+body.dark .btn,
+body.dark button,
+body.dark input,
+body.dark textarea {
+  color: #fff !important;
+  background: #181818 !important;
+  border-color: #333 !important;
+}
+body.dark .project-card,
+body.dark .card,
+body.dark .card-sm,
+body.dark .modal-content {
+  background: #181818 !important;
+  color: #f3f6fa !important;
+}
+body.dark .badge-live {
+  background: rgba(56,232,195,0.22) !important;
+  color: #38e8c3 !important;
+}
+body.dark .skill {
+  background: rgba(56,232,195,0.18) !important;
+  color: #38e8c3 !important;
+}
+body.dark .dot {
+  background: #38e8c3 !important;
+}
+body.dark a,
+body.dark a:visited {
+  color: #38e8c3 !important;
+}
+body.dark a:hover {
+  color: #fff !important;
+  background: #38e8c3 !important;
+}
+body.dark .modal-close {
+  color: #38e8c3 !important;
+}
+/* Animations & microinteractions */
+.project-card, .card-sm {
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.project-card:hover, .card-sm:hover {
+  box-shadow: 0 8px 32px rgba(15, 118, 110, 0.12);
+  transform: translateY(-6px) scale(1.02);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+/* Hamburger menu for mobile */
+@media (max-width:640px){
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 18px;
+    background: var(--card);
+    box-shadow: 0 8px 30px rgba(2,6,23,0.08);
+    padding: 16px;
+    z-index: 100;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  #navToggle {
+    display: inline-block;
+  }
+}
+@media (min-width:641px){
+  .nav-links {
+    display: flex !important;
+    position: static;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+  #navToggle {
+    display: none !important;
+  }
+}
   </style>
+  <!-- Add favicon for branding -->
+<link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 <body>
   <header>
@@ -212,12 +456,14 @@
         <div style="font-weight:800">Medhansh</div>
         <div style="width:8px;height:8px;background:var(--accent);border-radius:50%"></div>
       </div>
+      <button id="darkModeToggle" class="btn ghost" style="margin-right:12px" aria-label="Toggle dark mode">🌙</button>
       <nav class="nav-links">
         <a href="#work">Work</a>
         <a href="#experiments">Build Logs</a>
         <a href="#about">About</a>
         <a class="cta" href="#contact">Contact</a>
       </nav>
+      <button id="navToggle" class="btn ghost" style="display:none" aria-label="Open navigation">☰</button>
     </div>
   </header>
 
@@ -294,6 +540,52 @@
               <div class="skill">Reels / Video Editing</div>
             </div>
           </div>
+
+          <!-- Skills bars section -->
+          <div class="skills-bars">
+            <div class="skill-bar">
+              <div class="skill-bar-label">Python <span>90%</span></div>
+              <div class="skill-bar-track">
+                <span class="skill-bar-fill" style="width:90%"></span>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-label">Power BI <span>85%</span></div>
+              <div class="skill-bar-track">
+                <span class="skill-bar-fill" style="width:85%"></span>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-label">SQL/MySQL <span>80%</span></div>
+              <div class="skill-bar-track">
+                <span class="skill-bar-fill" style="width:80%"></span>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-label">HTML/CSS/JS <span>80%</span></div>
+              <div class="skill-bar-track">
+                <span class="skill-bar-fill" style="width:80%"></span>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-label">MATLAB <span>70%</span></div>
+              <div class="skill-bar-track">
+                <span class="skill-bar-fill" style="width:70%"></span>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-label">PSpice <span>65%</span></div>
+              <div class="skill-bar-track">
+                <span class="skill-bar-fill" style="width:65%"></span>
+              </div>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-bar-label">TensorFlow/ML <span>60%</span></div>
+              <div class="skill-bar-track">
+                <span class="skill-bar-fill" style="width:60%"></span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -322,10 +614,18 @@
                 <div style="font-weight:700">SweetHeart — Live Menu Website</div>
                 <span class="badge-live">Live</span>
               </div>
-              <small class="muted">Responsive menu site for a local restaurant. Deployed on Vercel — owner-friendly and fast to update.</small>
+              <small class="muted">Mobile-friendly menu site for a local restaurant. Owner can update easily.</small>
             </div>
+            <div style="display:flex;gap:6px;margin:6px 0 0 0;flex-wrap:wrap">
+              <span class="skill project-badge">HTML</span>
+              <span class="skill project-badge">CSS</span>
+              <span class="skill project-badge">JavaScript</span>
+              <span class="skill project-badge">Vercel</span>
+            </div>
+
             <div style="margin-top:auto;display:flex;gap:8px">
               <a class="btn ghost" href="https://sweetheart2.vercel.app/" target="_blank">Open</a>
+              <a class="btn ghost" href="https://github.com/MedhanshMedishetty/Menu_for_SweetHeart2" target="_blank">Source</a>
               <button class="btn case-btn" data-id="sweetheart">Case Study</button>
             </div>
           </div>
@@ -335,7 +635,12 @@
             <img class="project-thumb" src="assets/mrgroup.png" alt="MR Group">
             <div>
               <div style="font-weight:700">MR Group — Company Website (upcoming)</div>
-              <small class="muted">Website in progress for MR INFRA & MR TORQUES to showcase manufacturing, construction, and product lines.</small>
+              <small class="muted">Business site for MR INFRA & MR TORQUES. In progress.</small>
+            </div>
+            <div style="display:flex;gap:6px;margin:6px 0 0 0;flex-wrap:wrap">
+              <span class="skill project-badge">HTML</span>
+              <span class="skill project-badge">CSS</span>
+              <span class="skill project-badge">JavaScript</span>
             </div>
             <div style="margin-top:auto;display:flex;gap:8px">
               <button class="btn" onclick="openProject('mrgroup')">Preview</button>
@@ -347,11 +652,17 @@
           <div class="project-card" data-category="data" data-id="amazon">
             <img class="project-thumb" src="assets/amazon.png" alt="Amazon">
             <div>
-              <div style="font-weight:700">Sales Performance Optimization — Amazon India</div>
-              <small class="muted">Analyzed a cleaned dataset (~128,976 records) to identify top categories, seasonal patterns, and pricing strategies. Power BI dashboards + SQL queries.</small>
+              <div style="font-weight:700">Amazon India — Sales Dashboard</div>
+              <small class="muted">Power BI dashboard for sales trends and pricing insights.</small>
+            </div>
+            <div style="display:flex;gap:6px;margin:6px 0 0 0;flex-wrap:wrap">
+              <span class="skill project-badge">Power BI</span>
+              <span class="skill project-badge">SQL</span>
+              <span class="skill project-badge">Data Analysis</span>
             </div>
             <div style="margin-top:auto;display:flex;gap:8px">
               <button class="btn ghost" onclick="openProject('amazon')">View Report</button>
+              <a class="btn ghost" href="https://github.com/MedhanshMedishetty/amazon-india-sales-dashboard" target="_blank">Source</a>
               <button class="btn case-btn" data-id="amazon">Case Study</button>
             </div>
           </div>
@@ -360,11 +671,16 @@
           <div class="project-card" data-category="data" data-id="superstore">
             <img class="project-thumb" src="assets/superstore.png" alt="SuperStore">
             <div>
-              <div style="font-weight:700">Super Store Sales Dashboard — Power BI</div>
-              <small class="muted">Interactive dashboard built in Power BI highlighting KPIs, regional trends and product-level insights.</small>
+              <div style="font-weight:700">Super Store — Power BI Dashboard</div>
+              <small class="muted">Interactive dashboard with KPIs and product insights.</small>
+            </div>
+            <div style="display:flex;gap:6px;margin:6px 0 0 0;flex-wrap:wrap">
+              <span class="skill project-badge">Power BI</span>
+              <span class="skill project-badge">Data Visualization</span>
             </div>
             <div style="margin-top:auto;display:flex;gap:8px">
               <button class="btn" onclick="openProject('superstore')">Open</button>
+              <a class="btn ghost" href="https://github.com/MedhanshMedishetty/superstore-sales-powerbi" target="_blank">Source</a>
               <button class="btn case-btn" data-id="superstore">Case Study</button>
             </div>
           </div>
@@ -373,11 +689,16 @@
           <div class="project-card" data-category="data" data-id="zomato">
             <img class="project-thumb" src="assets/zomato.png" alt="Zomato">
             <div>
-              <div style="font-weight:700">Zomato Sales Dashboard</div>
-              <small class="muted">Restaurant-level sales analytics and menu performance visualization using Power BI.</small>
+              <div style="font-weight:700">Zomato — Sales Dashboard</div>
+              <small class="muted">Restaurant sales and menu performance in Power BI.</small>
+            </div>
+            <div style="display:flex;gap:6px;margin:6px 0 0 0;flex-wrap:wrap">
+              <span class="skill project-badge">Power BI</span>
+              <span class="skill project-badge">Data Analysis</span>
             </div>
             <div style="margin-top:auto;display:flex;gap:8px">
               <button class="btn" onclick="openProject('zomato')">Open</button>
+              <a class="btn ghost" href="https://github.com/MedhanshMedishetty/zomato-delivery-analysis" target="_blank">Source</a>
               <button class="btn case-btn" data-id="zomato">Case Study</button>
             </div>
           </div>
@@ -386,8 +707,13 @@
           <div class="project-card" data-category="eng" data-id="ev">
             <img class="project-thumb" src="assets/ev_sim.png" alt="EV Simulation">
             <div>
-              <div style="font-weight:700">EV Battery Simulation — 800V vs 400V</div>
-              <small class="muted">7-week MATLAB research comparing power delivery, thermal behavior and performance tradeoffs for 800V and 400V systems.</small>
+              <div style="font-weight:700">EV Battery Simulation</div>
+              <small class="muted">MATLAB study: 800V vs 400V battery systems for EVs.</small>
+            </div>
+            <div style="display:flex;gap:6px;margin:6px 0 0 0;flex-wrap:wrap">
+              <span class="skill project-badge">MATLAB</span>
+              <span class="skill project-badge">Simulink</span>
+              <span class="skill project-badge">Research</span>
             </div>
             <div style="margin-top:auto;display:flex;gap:8px">
               <button class="btn ghost" onclick="openProject('ev')">Summary</button>
@@ -400,7 +726,12 @@
             <img class="project-thumb" src="assets/drdl.png" alt="DRDL">
             <div>
               <div style="font-weight:700">DRDL — Grounding & Earth Pits</div>
-              <small class="muted">PSpice simulations, earth-pit calculations and led a small installation team during the internship at DRDL Hyderabad.</small>
+              <small class="muted">PSpice simulation and field work for defense grounding.</small>
+            </div>
+            <div style="display:flex;gap:6px;margin:6px 0 0 0;flex-wrap:wrap">
+              <span class="skill project-badge">PSpice</span>
+              <span class="skill project-badge">Field Work</span>
+              <span class="skill project-badge">Simulation</span>
             </div>
             <div style="margin-top:auto;display:flex;gap:8px">
               <button class="btn" onclick="openProject('drdl')">Details</button>
@@ -670,7 +1001,11 @@
     <div class="modal-content">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <h3 id="caseTitle">Case Study</h3>
-        <div class="modal-close" id="modalClose">✕</div>
+        <!-- Add aria-label to modal close for accessibility -->
+<!--
+<div class="modal-close" id="modalClose">✕</div>
+-->
+<div class="modal-close" id="modalClose" aria-label="Close">✕</div>
       </div>
       <div id="caseBody" style="margin-top:12px;color:var(--muted)"></div>
     </div>
@@ -707,43 +1042,31 @@
       'sweetheart': `<p><strong>Challenge:</strong> Local restaurant needed a clean, fast, and owner-manageable menu online to stop sharing images.</p>
         <p><strong>Process:</strong> Built a responsive static site, optimized images, and deployed on Vercel. Setup a simple update process using GitHub or file replacements.</p>
         <p><strong>Result:</strong> Live link for customers and delivery partners, faster menu updates, reduced owner effort.</p>`,
-
       'mrgroup': `<p><strong>Goal:</strong> Create a professional presence for MR INFRA and MR TORQUES under MR Group of Companies.</p>
         <p><strong>Approach:</strong> Designing a modern business site with clear services, project gallery, and contact funnels for leads. Focus on lead capture and product showcase.</p>
         <p><strong>Status:</strong> In development. Upcoming page will include company profiles, product pages, and contact forms.</p>`,
-
       'amazon': `<p><strong>Challenge:</strong> Understand sales patterns from a large Amazon India dataset (≈128,976 records).</p>
         <p><strong>Process:</strong> Data cleaning, SQL analysis in MySQL, exploratory analysis, and interactive dashboards in Power BI. Built KPIs for category performance and seasonality.</p>
         <p><strong>Impact:</strong> Actionable insights on pricing and promotions; dashboards for tracking key metrics.</p>`,
-
       'superstore': `<p><strong>Project:</strong> Super Store Sales Dashboard</p>
         <p><strong>Work:</strong> Data modelling and visualisation using Power BI. Implemented filters, measures, and drill-downs for deeper insights.</p>`,
-
       'zomato': `<p><strong>Project:</strong> Zomato Sales Dashboard</p>
         <p><strong>Work:</strong> Restaurant analytics to track menu performance and order trends. Recommendations included menu pruning and promotional strategies.</p>`,
-
       'ev': `<p><strong>Challenge:</strong> Compare 800V vs 400V battery systems for EV applications.</p>
         <p><strong>Approach:</strong> MATLAB simulations covering power delivery, thermal behaviour and performance tradeoffs; simulated PWM and Boost rectifier components.</p>
         <p><strong>Outcome:</strong> Technical summary of tradeoffs to inform design decisions for vehicle architecture.</p>`,
-
       'drdl': `<p><strong>Work:</strong> Earth pit calculations, PSpice validation and on-site installation leadership during DRDL internship.</p>
         <p><strong>Outcome:</strong> Successfully constructed grounding installations and validated performance with simulation and field tests.</p>`,
-
       'textcls': `<p><strong>Project:</strong> Text Classification (TensorFlow)</p>
         <p><strong>Details:</strong> Tokenization, embeddings, model training and evaluation. This project is part of the Personify AIML internship certificates.</p>`,
-
       'landmark': `<p><strong>Project:</strong> Landmark Detection</p>
         <p><strong>Details:</strong> Transfer learning and object detection approaches to recognize and label landmarks from images.</p>`,
-
       'petface': `<p><strong>Project:</strong> Pet Face Classification</p>
         <p><strong>Details:</strong> CNN-based classifier with augmentation and fine-tuning to distinguish breeds and species.</p>`,
-
       'navsys': `<p><strong>Project:</strong> Website Navigation System (Python)</p>
         <p><strong>Details:</strong> Prototype navigation system aimed at improving accessibility and site navigation using python-based parsing and control flows. Demo available on request.</p>`,
-
       'urbannook': `<p><strong>Project:</strong> Urban Nook — Brand Reel</p>
         <p><strong>Work:</strong> Concept, shoot-plan, editing and final delivery. Designed for social reach and conversions.</p>`,
-
       'shaden': `<p><strong>Project:</strong> SHADEN — Clothing Brand</p>
         <p><strong>Status:</strong> Brand identity, moodboards and pre-launch strategy created. Launch materials ready.</p>`
     };
@@ -802,47 +1125,84 @@
 Email: ${email}
 
 ${message}`);
-      window.location.href = `mailto:your.email@example.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:medishettymedhansh@gmail.com?subject=${subject}&body=${body}`;
     });
 
     // image fallbacks
     document.addEventListener('DOMContentLoaded',()=>{
-      document.querySelectorAll('.project-thumb').forEach(img=>{ if(!img.complete || img.naturalWidth===0) img.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360"><rect width="100%" height="100%" fill="%23eef2f1"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%239ba8a4" font-family="Arial" font-size="20">Project</text></svg>' });
-      const avatar = document.querySelector('.avatar'); if(avatar && ( !avatar.complete || avatar.naturalWidth===0 )) avatar.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="100%" height="100%" fill="%23e6f2ef"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%230f766e" font-family="Arial" font-size="32">Med</text></svg>';
+      document.querySelectorAll('.project-thumb').forEach(img=>{
+        img.onerror = function() {
+          this.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360"><rect width="100%" height="100%" fill="%23eef2f1"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%239ba8a4" font-family="Arial" font-size="20">Project</text></svg>';
+        };
+        if(!img.complete || img.naturalWidth===0) img.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="360"><rect width="100%" height="100%" fill="%23eef2f1"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%239ba8a4" font-family="Arial" font-size="20">Project</text></svg>';
+      });
+      const avatar = document.querySelector('.avatar');
+      if(avatar){
+        avatar.onerror = function() {
+          this.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="100%" height="100%" fill="%23e6f2ef"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%230f766e" font-family="Arial" font-size="32">Med</text></svg>';
+        };
+        if( !avatar.complete || avatar.naturalWidth===0 ) avatar.src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="100%" height="100%" fill="%23e6f2ef"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%230f766e" font-family="Arial" font-size="32">Med</text></svg>';
+      }
     })
 
     // Header background on scroll
     window.addEventListener("scroll", () => {
-    const header = document.querySelector("header");
-    if (window.scrollY > 10) {
+      const header = document.querySelector("header");
+      if (window.scrollY > 10) {
         header.classList.add("scrolled");
-    } else {
+      } else {
         header.classList.remove("scrolled");
-    }
+      }
     });
 
+    // Dark mode toggle
+document.getElementById('darkModeToggle').addEventListener('click', function() {
+  document.body.classList.toggle('dark');
+  this.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+});
 
+// Hamburger menu toggle
+const navToggle = document.getElementById('navToggle');
+const navLinksEl = document.querySelector('.nav-links');
+navToggle.addEventListener('click', () => {
+  navLinksEl.classList.toggle('open');
+});
+navLinksEl.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinksEl.classList.remove('open');
+  });
+});
+
+    // Allow clicking outside the modal-content to close the modal
+modal.addEventListener('mousedown', function(e) {
+  // Only close if the click is directly on the modal background, not inside the modal-content
+  if (e.target === modal) {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+});
   </script>
   <script>
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav ul li a");
+    // Navigation highlight fix: use correct selector and handle missing section ids
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("nav a");
 
     window.addEventListener("scroll", () => {
       let current = "";
       sections.forEach(section => {
         const sectionTop = section.offsetTop - 60;
-        if (pageYOffset >= sectionTop) {
+        if (window.scrollY >= sectionTop) {
           current = section.getAttribute("id");
         }
       });
 
       navLinks.forEach(link => {
         link.classList.remove("active");
-        if (link.getAttribute("href").includes(current)) {
+        if (current && link.getAttribute("href").includes(current)) {
           link.classList.add("active");
         }
       });
     });
-    </script>
+  </script>
 </body>
 </html>
