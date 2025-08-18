@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Medhansh Medishetty — Portfolio</title>
   <meta name="description" content="Medhansh — software, data & creative. Portfolio site." />
+  <meta name="theme-color" content="#0f766e">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -329,7 +330,29 @@ body.dark .skill-bar-fill {
       transition: background 0.3s ease;
     }
 
-    /* Dark mode styles */
+    /* Always display header at the top */
+header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0;
+  width: 100vw;
+  z-index: 80;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Add top margin to main content so it doesn't hide under header */
+main.container {
+  margin-top: 80px;
+}
+@media (max-width:640px){
+  main.container {
+    margin-top: 64px;
+  }
+}
+
+/* Dark mode styles */
 body.dark {
   background: #000 !important;
   color: #f3f6fa !important;
@@ -352,8 +375,8 @@ body.dark .fade-up.visible {
   color: #e0e6ef !important;
 }
 body.dark .nav-links a.cta {
-  border: 1px solid #38e8c3 !important;
-  color: #38e8c3 !important;
+  border: 1px solid #ffffff !important;
+  color: #ffffff !important;
   background: transparent !important;
 }
 body.dark .btn.primary {
@@ -445,27 +468,158 @@ body.dark .modal-close {
     display: none !important;
   }
 }
+
+/* --- Add/replace in <style> --- */
+
+/* Header and nav-wrap mobile fix */
+@media (max-width:640px){
+  header {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  .container.nav-wrap {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 8px;
+    width: 100vw;
+    min-width: 0;
+    box-sizing: border-box;
+    gap: 0;
+  }
+  .logo {
+    font-size: 1.1rem;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+  #darkModeToggle {
+    font-size: 1.7rem !important;
+    padding: 10px 14px !important;
+    margin-right: 0 !important;
+    margin-left: auto;
+    border-radius: 12px;
+    background: rgba(15,119,110,0.08);
+    color: var(--accent);
+    position: relative;
+    z-index: 101;
+  }
+  #navToggle {
+    font-size: 2.1rem !important;
+    padding: 8px 14px !important;
+    margin-left: 8px;
+    border-radius: 12px;
+    background: rgba(15,119,110,0.08);
+    color: var(--accent);
+    position: relative;
+    z-index: 101;
+    display: inline-block !important;
+  }
+  .nav-links {
+    top: 56px;
+    right: 10px;
+    min-width: 140px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Make dark mode toggle more visible on all screens */
+#darkModeToggle {
+  font-size: 1.3rem;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(15,119,110,0.08);
+  color: var(--accent);
+  border: none;
+  transition: background 0.2s, color 0.2s;
+}
+#darkModeToggle:hover {
+  background: var(--accent);
+  color: #fff;
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* Hamburger menu always visible on mobile */
+#navToggle {
+  font-size: 1.7rem;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(15,119,110,0.08);
+  color: var(--accent);
+  border: none;
+  transition: background 0.2s, color 0.2s;
+  display: none;
+}
+#navToggle:hover {
+  background: var(--accent);
+  color: #fff;
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+/* Hamburger menu color in dark mode */
+body.dark #navToggle {
+  color: #fff !important;
+  background: rgb(0, 0, 0) !important;
+  border-color: #333 !important;
+}
+
+/* Hamburger menu options color in dark mode */
+@media (max-width:640px){
+  body.dark .nav-links {
+    background: #181818 !important;
+  }
+  body.dark .nav-links a {
+    color: #fff !important;
+  }
+  body.dark .nav-links a.cta {
+    border: 1px solid #fff !important;
+    color: #fff !important;
+    background: transparent !important;
+  }
+}
+
+/* Make dark mode toggle and hamburger menu the same size */
+#darkModeToggle,
+#navToggle {
+  font-size: 2.1rem !important;
+  padding: 8px 14px !important;
+  border-radius: 12px;
+  background: rgba(15,119,110,0.08);
+  color: var(--accent);
+  border: none;
+  transition: background 0.2s, color 0.2s;
+  margin: 0 !important;
+  position: relative;
+  z-index: 101;
+  display: inline-block;
+}
   </style>
   <!-- Add favicon for branding -->
 <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 <body>
   <header>
-    <div class="container nav-wrap">
-      <div class="logo">
-        <div style="font-weight:800">Medhansh</div>
-        <div style="width:8px;height:8px;background:var(--accent);border-radius:50%"></div>
-      </div>
-      <button id="darkModeToggle" class="btn ghost" style="margin-right:12px" aria-label="Toggle dark mode">🌙</button>
-      <nav class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#experiments">Build Logs</a>
-        <a href="#about">About</a>
-        <a class="cta" href="#contact">Contact</a>
-      </nav>
-      <button id="navToggle" class="btn ghost" style="display:none" aria-label="Open navigation">☰</button>
+  <div class="container nav-wrap">
+    <div class="logo">
+      <div style="font-weight:800">Medhansh</div>
+      <div style="width:8px;height:8px;background:var(--accent);border-radius:50%"></div>
     </div>
-  </header>
+    <nav class="nav-links" id="mainNav">
+      <a href="#work">Work</a>
+      <a href="#experiments">Build Logs</a>
+      <a href="#about">About</a>
+      <a class="cta" href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button id="darkModeToggle" class="btn ghost" aria-label="Toggle dark mode">🌙</button>
+      <button id="navToggle" class="btn ghost" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav">☰</button>
+    </div>
+  </div>
+</header>
 
   <main class="container">
     <!-- HERO -->
@@ -1171,6 +1325,18 @@ navLinksEl.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navLinksEl.classList.remove('open');
   });
+});
+
+// Close hamburger menu when clicking outside
+document.addEventListener('click', function(e) {
+  const isMenuOpen = navLinksEl.classList.contains('open');
+  if (
+    isMenuOpen &&
+    !navLinksEl.contains(e.target) &&
+    e.target !== navToggle
+  ) {
+    navLinksEl.classList.remove('open');
+  }
 });
 
     // Allow clicking outside the modal-content to close the modal
